@@ -6,12 +6,12 @@ const { languages, domainLanguage, selectedLanguage, setLanguage } =
 </script>
 
 <template>
-  <h3>LanguageList</h3>
+  <h3>Language List</h3>
   <div>
     <button v-for="language in languages" @click="setLanguage(language.id)">
       {{ language.name }}
     </button>
   </div>
-  <p>Selected selectedLanguage: {{ selectedLanguage?.name }}</p>
+  <p>Selected language: {{ selectedLanguage?.name }}</p>
   <p>Domain language {{ domainLanguage?.name }}</p>
 </template>

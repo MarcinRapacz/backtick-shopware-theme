@@ -1,4 +1,5 @@
 import { ref, Ref, computed, ComputedRef, watch } from "vue";
+import { uniqBy } from "lodash";
 import { useState } from "#app";
 import { ILanguage } from "@/modules/nuxt-shopware-cache/interfaces/ILanguage";
 import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannel";
@@ -22,7 +23,10 @@ export const useLanguage = (): IUseLanguage => {
   const domainLanguage = computed(() => selectedDomain.value?.language);
 
   const languages: Ref<ILanguage[]> = ref(
-    salesChannel.value.domains.map((domains) => domains.language)
+    uniqBy(
+      salesChannel.value.domains.map((domains) => domains.language),
+      "id"
+    )
   );
 
   const setLanguage = (id: string): void => {

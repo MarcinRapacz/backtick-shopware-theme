@@ -1,8 +1,8 @@
 <template>
   <h1>Index</h1>
-  <p>{{ salesChannel.accessKey }}</p>
   <SalesChannelDomainList />
   <LanguageList />
+  <CurrencyList />
 </template>
 
 <script setup lang="ts">

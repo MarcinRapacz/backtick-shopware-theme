@@ -8,6 +8,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "nuxt": "3.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
