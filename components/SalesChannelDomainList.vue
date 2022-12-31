@@ -1,22 +1,15 @@
 <script setup lang="ts">
-import { useSalesChannelDomains } from "#imports";
+import { useDomain } from "#imports";
 
-const {
-  salesChannelDomains,
-  setSalesChannelDomain,
-  selectedSalesChannelDomain,
-} = useSalesChannelDomains();
+const { domains, setDomain, selectedDomain } = useDomain();
 </script>
 
 <template>
   <h3>SalesChannelDomainList</h3>
   <div>
-    <button
-      v-for="salesChannelDomain in salesChannelDomains"
-      @click="setSalesChannelDomain(salesChannelDomain.id)"
-    >
-      {{ salesChannelDomain.url }}
+    <button v-for="domain in domains" @click="setDomain(domain.id)">
+      {{ domain.url }}
     </button>
   </div>
-  <p>Selected salesChannelDomains: {{ selectedSalesChannelDomain?.url }}</p>
+  <p>Selected setDomain: {{ selectedDomain?.url }}</p>
 </template>

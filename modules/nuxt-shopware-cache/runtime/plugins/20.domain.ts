@@ -1,11 +1,14 @@
 import { defineNuxtPlugin } from "#app";
-import { useLanguage, useSalesChannelDomains } from "#imports";
+import { useLanguage, useDomain, useSalesChannel } from "#imports";
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-  const { setSalesChannelDomain } = useSalesChannelDomains();
+  const { salesChannel } = useSalesChannel();
+  const { setDomain } = useDomain();
   const { setLanguage } = useLanguage();
   // TODO: set domain by prefix in url
-  const domain = nuxtApp.$salesChannel.domains[0];
-  setSalesChannelDomain(domain.id);
-  setLanguage(domain.languageId);
+  const domain = salesChannel.value?.domains[0];
+  if (domain) {
+    setDomain(domain.id);
+    setLanguage(domain.languageId);
+  }
 });

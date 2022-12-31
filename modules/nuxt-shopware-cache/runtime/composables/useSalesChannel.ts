@@ -1,14 +1,14 @@
-import { useNuxtApp } from "#app";
+import { Ref } from "vue";
 import { ISalesChannel } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannel";
 
 interface IUseSalesChannel {
-  salesChannel: ISalesChannel;
+  salesChannel: Ref<ISalesChannel | null>;
 }
 
 export const useSalesChannel = (): IUseSalesChannel => {
-  const nuxtApp = useNuxtApp();
+  const salesChannel = useState<ISalesChannel | null>("salesChannel");
 
   return {
-    salesChannel: nuxtApp.$salesChannel,
+    salesChannel,
   };
 };
