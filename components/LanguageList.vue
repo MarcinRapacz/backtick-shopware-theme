@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { useLanguage } from "#imports";
 
-const { languages, selectedLanguage, setLanguage } = useLanguage();
+const { languages, domainLanguage, selectedLanguage, setLanguage } =
+  useLanguage();
 </script>
 
 <template>
@@ -12,4 +13,5 @@ const { languages, selectedLanguage, setLanguage } = useLanguage();
     </button>
   </div>
   <p>Selected selectedLanguage: {{ selectedLanguage?.name }}</p>
+  <p>Domain language {{ domainLanguage?.name }}</p>
 </template>

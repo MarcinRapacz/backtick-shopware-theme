@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["./modules/nuxt-shopware-cache/module.ts"],
+  modules: ["./modules/nuxt-shopware-cache/module"],
   nitro: {
     storage: {
       redis: {
