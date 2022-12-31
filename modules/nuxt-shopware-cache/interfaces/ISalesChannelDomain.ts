@@ -1,6 +1,6 @@
-import { ICurrency } from "./ICurrency";
-import { ILanguage } from "./ILanguage";
-import { ISnippetSet } from "./ISnippetSet";
+import { ICurrency } from "@/modules/nuxt-shopware-cache/interfaces/ICurrency";
+import { ILanguage } from "@/modules/nuxt-shopware-cache/interfaces/ILanguage";
+import { ISnippetSet } from "@/modules/nuxt-shopware-cache/interfaces/ISnippetSet";
 
 export interface ISalesChannelDomain {
   url: string;

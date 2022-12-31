@@ -1,5 +1,5 @@
 import { useNuxtApp } from "#app";
-import { ISalesChannel } from "../../interfaces/ISalesChannel";
+import { ISalesChannel } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannel";
 
 interface IUseSalesChannel {
   salesChannel: ISalesChannel;

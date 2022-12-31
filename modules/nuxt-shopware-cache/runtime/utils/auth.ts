@@ -1,4 +1,4 @@
-import * as redis from "./redis";
+import { redisUtils } from "@/modules/nuxt-shopware-cache/runtime/utils";
 
 interface IResponse {
   token_type: string;
@@ -8,7 +8,7 @@ interface IResponse {
 
 export const getBearerToken = async () => {
   try {
-    let token = await useStorage().getItem(redis.keys.temp.token);
+    let token = await useStorage().getItem(redisUtils.keys.temp.token);
     if (!token) {
       const { API_URL, API_ACCESS_KEY, API_SECURE_ACCESS_KEY } = process.env;
 
@@ -24,11 +24,11 @@ export const getBearerToken = async () => {
 
       token = `${response.token_type} ${response.access_token}`;
 
-      await useStorage().setItem(redis.keys.temp.token, token);
+      await useStorage().setItem(redisUtils.keys.temp.token, token);
     }
     return token;
   } catch (e) {
-    await useStorage().removeItem(redis.keys.temp.token);
+    await useStorage().removeItem(redisUtils.keys.temp.token);
     throw new Error(`getBearerToken: ${e}`);
   }
 };

@@ -1,6 +1,6 @@
 import { useNuxtApp } from "#app";
-import { ISalesChannelDomain } from "../../interfaces/ISalesChannelDomain";
-import { ISnippetSet } from "../../interfaces/ISnippetSet";
+import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
+import { ISnippetSet } from "@/modules/nuxt-shopware-cache/interfaces/ISnippetSet";
 
 interface IUseSnippetSet {
   snippetSets: ISnippetSet[];

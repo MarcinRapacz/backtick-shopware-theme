@@ -1,7 +1,7 @@
 import { useState } from "#app";
 import { computed, ComputedRef, Ref, ref } from "vue";
-import { ISalesChannelDomain } from "../../interfaces/ISalesChannelDomain";
-import { useSalesChannel } from "./useSalesChannel";
+import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
+import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannel";
 
 interface IUseSalesChannelDomains {
   salesChannelDomains: Ref<ISalesChannelDomain[]>;

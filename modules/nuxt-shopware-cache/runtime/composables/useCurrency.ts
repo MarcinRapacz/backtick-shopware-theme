@@ -1,6 +1,6 @@
 import { useNuxtApp } from "#app";
-import { ICurrency } from "../../interfaces/ICurrency";
-import { ISalesChannelDomain } from "../../interfaces/ISalesChannelDomain";
+import { ICurrency } from "@/modules/nuxt-shopware-cache/interfaces/ICurrency";
+import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
 
 interface IUseCurrency {
   currencies: ICurrency[];

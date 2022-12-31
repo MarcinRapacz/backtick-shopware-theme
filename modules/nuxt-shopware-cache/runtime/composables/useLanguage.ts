@@ -1,8 +1,8 @@
 import { ref, Ref, computed, ComputedRef, watch } from "vue";
 import { useState } from "#app";
-import { ILanguage } from "../../interfaces/ILanguage";
-import { useSalesChannel } from "./useSalesChannel";
-import { useSalesChannelDomains } from "./useSalesChannelDomains";
+import { ILanguage } from "@/modules/nuxt-shopware-cache/interfaces/ILanguage";
+import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannel";
+import { useSalesChannelDomains } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannelDomains";
 
 interface IUseLanguage {
   selectedLanguage: ComputedRef<ILanguage | undefined>;

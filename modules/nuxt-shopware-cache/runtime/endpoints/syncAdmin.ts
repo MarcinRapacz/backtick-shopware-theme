@@ -1,5 +1,7 @@
-import { getBearerToken } from "../../utils/auth";
-import { syncSalesChannel } from "../../utils/salesChannel";
+import {
+  authUtils,
+  salesChannelUtils,
+} from "@/modules/nuxt-shopware-cache/runtime/utils";
 
 const clearTempStorage = async () => {
   const keys = (await useStorage().getKeys()).filter((key: string) =>
@@ -9,9 +11,9 @@ const clearTempStorage = async () => {
 };
 
 export default defineEventHandler(async (_event) => {
-  await getBearerToken();
+  await authUtils.getBearerToken();
 
-  await syncSalesChannel();
+  await salesChannelUtils.syncSalesChannel();
 
   await clearTempStorage();
 

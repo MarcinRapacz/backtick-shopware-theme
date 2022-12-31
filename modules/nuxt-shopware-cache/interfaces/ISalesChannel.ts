@@ -1,4 +1,4 @@
-import { ISalesChannelDomain } from "./ISalesChannelDomain";
+import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
 
 export interface ISalesChannel {
   typeId: string;
