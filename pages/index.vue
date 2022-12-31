@@ -3,6 +3,7 @@
   <SalesChannelDomainList />
   <LanguageList />
   <CurrencyList />
+  <SnippetSetList />
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useCurrency } from "#imports";
-
 const { currencies, domainCurrency, selectedCurrency, setCurrency } =
   useCurrency();
 </script>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useDomain } from "#imports";
-
 const { domains, setDomain, selectedDomain } = useDomain();
 </script>
 

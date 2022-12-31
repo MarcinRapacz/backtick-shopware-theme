@@ -1,7 +1,6 @@
 <template>
-  <div>Nuxt module playground!</div>
   <p>{{ salesChannel.name }}</p>
-  <nav>
+  <nav class="nav">
     <NuxtLink to="/">Homepage</NuxtLink>
     <NuxtLink to="/about">About</NuxtLink>
   </nav>
@@ -12,3 +11,11 @@
 import { useSalesChannel } from "#imports";
 const { salesChannel } = useSalesChannel();
 </script>
+
+<style>
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+</style>

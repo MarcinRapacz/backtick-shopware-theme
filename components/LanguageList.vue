@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useLanguage } from "#imports";
-
 const { languages, domainLanguage, selectedLanguage, setLanguage } =
   useLanguage();
 </script>

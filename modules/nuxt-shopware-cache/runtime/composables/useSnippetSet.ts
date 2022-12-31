@@ -1,17 +1,50 @@
-import { useNuxtApp } from "#app";
-import { IDomain } from "~~/modules/nuxt-shopware-cache/interfaces/IDomain";
+import { Ref, ComputedRef } from "vue";
+import { uniqBy } from "lodash";
 import { ISnippetSet } from "@/modules/nuxt-shopware-cache/interfaces/ISnippetSet";
 
 interface IUseSnippetSet {
-  snippetSets: ISnippetSet[];
+  selectedSnippetSet: ComputedRef<ISnippetSet>;
+  domainSnippetSet: ComputedRef<ISnippetSet | undefined>;
+  snippetSets: Ref<ISnippetSet[]>;
+  setSnippetSet: (id: string) => void;
 }
 
 export const useSnippetSet = (): IUseSnippetSet => {
-  const nuxtApp = useNuxtApp();
+  const { salesChannel } = useSalesChannel();
+  const { selectedDomain } = useDomain();
+
+  const _selectedSnippetSet = useState<ISnippetSet>("_selectedSnippetSet");
+
+  const selectedSnippetSet = computed(() => _selectedSnippetSet.value);
+
+  const domainSnippetSet = computed(() => selectedDomain.value?.snippetSet);
+
+  const snippetSets: Ref<ISnippetSet[]> = ref(
+    uniqBy(
+      salesChannel.value.domains.map((domains) => domains.snippetSet),
+      "id"
+    )
+  );
+
+  const setSnippetSet = (id: string): void => {
+    const snippetSet: ISnippetSet | undefined = snippetSets.value.find(
+      (snippetset) => snippetset.id === id
+    );
+    if (!snippetSet) {
+      console.warn("Snippet set not found");
+      return;
+    }
+    _selectedSnippetSet.value = snippetSet;
+  };
+
+  watch(selectedDomain, (domain) => {
+    domain && setSnippetSet(domain.snippetSetId);
+  });
 
   return {
-    snippetSets: nuxtApp.$salesChannel.domains.map(
-      (domain: IDomain) => domain.snippetSet
-    ),
+    selectedSnippetSet,
+    domainSnippetSet,
+    snippetSets,
+    setSnippetSet,
   };
 };
