@@ -6,6 +6,14 @@ export default defineNuxtPlugin(async () => {
 
   if (!salesChannel.value) {
     const response = await $fetch("/api/get-admin");
-    salesChannel.value = response.salesChannel;
+
+    if (!response.salesChannel) {
+      const syncResponse = await $fetch("/api/sync-admin", {
+        method: "PUT",
+      });
+      salesChannel.value = syncResponse.salesChannel;
+    } else {
+      salesChannel.value = response.salesChannel;
+    }
   }
 });

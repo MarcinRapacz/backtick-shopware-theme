@@ -4,7 +4,7 @@ import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/IS
 import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannel";
 
 interface IUseDomain {
-  domains: Ref<ISalesChannelDomain[] | null>;
+  domains: Ref<ISalesChannelDomain[]>;
   selectedDomain: ComputedRef<ISalesChannelDomain | undefined>;
   setDomain: (id: string) => void;
 }
@@ -16,15 +16,13 @@ export const useDomain = (): IUseDomain => {
     "_selectedDomain"
   );
 
-  const domains: Ref<ISalesChannelDomain[] | null> = ref(
-    salesChannel.value?.domains ?? null
-  );
+  const domains: Ref<ISalesChannelDomain[]> = ref(salesChannel.value.domains);
 
   const selectedDomain = computed(() => _selectedDomain.value);
 
   const setDomain = (id: string): void => {
     const salesChannelDomain: ISalesChannelDomain | undefined =
-      domains.value?.find((salesChannelDomain) => salesChannelDomain.id === id);
+      domains.value.find((salesChannelDomain) => salesChannelDomain.id === id);
     if (!salesChannelDomain) {
       console.warn("Sales channel domain not found");
       return;

@@ -13,11 +13,12 @@ const clearTempStorage = async () => {
 export default defineEventHandler(async (_event) => {
   await authUtils.getBearerToken();
 
-  await salesChannelUtils.syncSalesChannel();
+  const salesChannel = await salesChannelUtils.syncSalesChannel();
 
   await clearTempStorage();
 
   return {
     message: "ok",
+    salesChannel,
   };
 });

@@ -5,8 +5,8 @@ import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composabl
 import { useDomain } from "~~/modules/nuxt-shopware-cache/runtime/composables/useDomain";
 
 interface IUseLanguage {
-  selectedLanguage: ComputedRef<ILanguage | undefined>;
-  languages: Ref<ILanguage[] | undefined>;
+  selectedLanguage: ComputedRef<ILanguage>;
+  languages: Ref<ILanguage[]>;
   setLanguage: (id: string) => void;
 }
 
@@ -14,18 +14,16 @@ export const useLanguage = (): IUseLanguage => {
   const { salesChannel } = useSalesChannel();
   const { selectedDomain } = useDomain();
 
-  const _selectedLanguage = useState<ILanguage | undefined>(
-    "_selectedLanguage"
-  );
+  const _selectedLanguage = useState<ILanguage>("_selectedLanguage");
 
   const selectedLanguage = computed(() => _selectedLanguage.value);
 
-  const languages: Ref<ILanguage[] | undefined> = ref(
-    salesChannel.value?.domains.map((domains) => domains.language)
+  const languages: Ref<ILanguage[]> = ref(
+    salesChannel.value.domains.map((domains) => domains.language)
   );
 
   const setLanguage = (id: string): void => {
-    const language: ILanguage | undefined = languages.value?.find(
+    const language: ILanguage | undefined = languages.value.find(
       (language) => language.id === id
     );
     if (!language) {

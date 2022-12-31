@@ -6,9 +6,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   const { setDomain } = useDomain();
   const { setLanguage } = useLanguage();
   // TODO: set domain by prefix in url
-  const domain = salesChannel.value?.domains[0];
-  if (domain) {
-    setDomain(domain.id);
-    setLanguage(domain.languageId);
-  }
+  const domain = salesChannel.value.domains[0];
+  setDomain(domain.id);
+  setLanguage(domain.languageId);
 });
