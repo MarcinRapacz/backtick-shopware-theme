@@ -1,6 +1,6 @@
 import { useNuxtApp } from "#app";
 import { ICurrency } from "@/modules/nuxt-shopware-cache/interfaces/ICurrency";
-import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
+import { IDomain } from "~~/modules/nuxt-shopware-cache/interfaces/IDomain";
 
 interface IUseCurrency {
   currencies: ICurrency[];
@@ -11,7 +11,7 @@ export const useCurrency = (): IUseCurrency => {
 
   return {
     currencies: nuxtApp.$salesChannel.domains.map(
-      (domain: ISalesChannelDomain) => domain.currency
+      (domain: IDomain) => domain.currency
     ),
   };
 };

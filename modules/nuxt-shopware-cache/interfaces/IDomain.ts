@@ -2,7 +2,7 @@ import { ICurrency } from "@/modules/nuxt-shopware-cache/interfaces/ICurrency";
 import { ILanguage } from "@/modules/nuxt-shopware-cache/interfaces/ILanguage";
 import { ISnippetSet } from "@/modules/nuxt-shopware-cache/interfaces/ISnippetSet";
 
-export interface ISalesChannelDomain {
+export interface IDomain {
   url: string;
   currencyId: string;
   currency: ICurrency;

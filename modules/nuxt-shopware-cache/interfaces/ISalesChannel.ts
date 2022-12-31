@@ -1,4 +1,4 @@
-import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
+import { IDomain } from "~~/modules/nuxt-shopware-cache/interfaces/IDomain";
 
 export interface ISalesChannel {
   typeId: string;
@@ -45,7 +45,7 @@ export interface ISalesChannel {
   paymentMethods: unknown;
   shippingMethods: unknown;
   translations: unknown;
-  domains: ISalesChannelDomain[];
+  domains: IDomain[];
   systemConfigs: unknown;
   navigationCategory: unknown;
   footerCategory: unknown;

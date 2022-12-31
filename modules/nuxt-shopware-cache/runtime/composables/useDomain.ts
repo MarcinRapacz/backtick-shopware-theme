@@ -1,28 +1,27 @@
 import { useState } from "#app";
 import { computed, ComputedRef, Ref, ref } from "vue";
-import { ISalesChannelDomain } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelDomain";
+import { IDomain } from "~~/modules/nuxt-shopware-cache/interfaces/IDomain";
 import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannel";
 
 interface IUseDomain {
-  domains: Ref<ISalesChannelDomain[]>;
-  selectedDomain: ComputedRef<ISalesChannelDomain | undefined>;
+  domains: Ref<IDomain[]>;
+  selectedDomain: ComputedRef<IDomain | undefined>;
   setDomain: (id: string) => void;
 }
 
 export const useDomain = (): IUseDomain => {
   const { salesChannel } = useSalesChannel();
 
-  const _selectedDomain = useState<ISalesChannelDomain | undefined>(
-    "_selectedDomain"
-  );
+  const _selectedDomain = useState<IDomain | undefined>("_selectedDomain");
 
-  const domains: Ref<ISalesChannelDomain[]> = ref(salesChannel.value.domains);
+  const domains: Ref<IDomain[]> = ref(salesChannel.value.domains);
 
   const selectedDomain = computed(() => _selectedDomain.value);
 
   const setDomain = (id: string): void => {
-    const salesChannelDomain: ISalesChannelDomain | undefined =
-      domains.value.find((salesChannelDomain) => salesChannelDomain.id === id);
+    const salesChannelDomain: IDomain | undefined = domains.value.find(
+      (salesChannelDomain) => salesChannelDomain.id === id
+    );
     if (!salesChannelDomain) {
       console.warn("Sales channel domain not found");
       return;
