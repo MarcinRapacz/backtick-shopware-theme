@@ -1,6 +1,7 @@
 import {
   authUtils,
   salesChannelUtils,
+  snippetUtils,
 } from "@/modules/nuxt-shopware-cache/runtime/utils";
 
 const clearTempStorage = async () => {
@@ -14,6 +15,9 @@ export default defineEventHandler(async (_event) => {
   await authUtils.getBearerToken();
 
   const salesChannel = await salesChannelUtils.syncSalesChannel();
+  await snippetUtils.syncSnippets({
+    setIds: salesChannel.domains.map((domain) => domain.snippetSetId),
+  });
 
   await clearTempStorage();
 

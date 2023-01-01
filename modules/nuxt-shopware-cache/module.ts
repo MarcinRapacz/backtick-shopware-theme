@@ -32,6 +32,12 @@ export default defineNuxtModule<ModuleOptions>({
       method: "get",
     });
 
+    addServerHandler({
+      route: "/api/snippets/:setId",
+      handler: resolve(runtimeDir, "endpoints", "getSnippetBySetId.ts"),
+      method: "get",
+    });
+
     // This order is important
     addPlugin(resolve(runtimeDir, "plugins", "20.setRuntimeData.ts"));
     addPlugin(resolve(runtimeDir, "plugins", "10.injectAdminData.ts"));

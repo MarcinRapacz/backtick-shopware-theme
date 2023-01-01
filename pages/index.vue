@@ -4,9 +4,8 @@
   <LanguageList />
   <CurrencyList />
   <SnippetSetList />
+  <!-- <SnippetList /> -->
+  <p>$t("message.hello"): {{ $t("message.hello") }}</p>
 </template>
 
-<script setup lang="ts">
-import { useSalesChannel } from "#imports";
-const { salesChannel } = useSalesChannel();
-</script>
+<script setup lang="ts"></script>

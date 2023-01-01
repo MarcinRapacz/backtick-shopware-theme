@@ -12,6 +12,7 @@ interface IUseSnippetSet {
 export const useSnippetSet = (): IUseSnippetSet => {
   const { salesChannel } = useSalesChannel();
   const { selectedDomain } = useDomain();
+  const { $i18n } = useNuxtApp();
 
   const _selectedSnippetSet = useState<ISnippetSet>("_selectedSnippetSet");
 
@@ -34,7 +35,11 @@ export const useSnippetSet = (): IUseSnippetSet => {
       console.warn("Snippet set not found");
       return;
     }
+
     _selectedSnippetSet.value = snippetSet;
+    if ($i18n) {
+      $i18n.global.locale = snippetSet.id as any;
+    }
   };
 
   watch(selectedDomain, (domain) => {
