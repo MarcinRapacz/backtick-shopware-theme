@@ -7,12 +7,14 @@ interface IUseSnippetSet {
   domainSnippetSet: ComputedRef<ISnippetSet | undefined>;
   snippetSets: Ref<ISnippetSet[]>;
   setSnippetSet: (id: string) => void;
+  fetchSnippetSet: (id: string) => any;
 }
 
 export const useSnippetSet = (): IUseSnippetSet => {
   const { salesChannel } = useSalesChannel();
   const { selectedDomain } = useDomain();
   const { $i18n } = useNuxtApp();
+  const snippets = useState<any>(`snippets`, () => ({}));
 
   const _selectedSnippetSet = useState<ISnippetSet>("_selectedSnippetSet");
 
@@ -27,7 +29,7 @@ export const useSnippetSet = (): IUseSnippetSet => {
     )
   );
 
-  const setSnippetSet = (id: string): void => {
+  const setSnippetSet = async (id: string): Promise<void> => {
     const snippetSet: ISnippetSet | undefined = snippetSets.value.find(
       (snippetset) => snippetset.id === id
     );
@@ -35,11 +37,20 @@ export const useSnippetSet = (): IUseSnippetSet => {
       console.warn("Snippet set not found");
       return;
     }
-
     _selectedSnippetSet.value = snippetSet;
+
+    if (!snippets.value[id]) {
+      await fetchSnippetSet(id);
+    }
+
     if ($i18n) {
       $i18n.global.locale = snippetSet.id as any;
     }
+  };
+
+  const fetchSnippetSet = async (id: string) => {
+    const response = await $fetch(`/api/snippets/${id}`);
+    snippets.value[id] = response.snippets;
   };
 
   watch(selectedDomain, (domain) => {
@@ -51,5 +62,6 @@ export const useSnippetSet = (): IUseSnippetSet => {
     domainSnippetSet,
     snippetSets,
     setSnippetSet,
+    fetchSnippetSet,
   };
 };

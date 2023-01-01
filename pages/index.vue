@@ -4,8 +4,11 @@
   <LanguageList />
   <CurrencyList />
   <SnippetSetList />
-  <!-- <SnippetList /> -->
-  <p>$t("message.hello"): {{ $t("message.hello") }}</p>
+  <p>$t("headless.homepage.title"): {{ $t("headless.homepage.title") }}</p>
+  <p>
+    $t("headless.homepage.description"):
+    {{ $t("headless.homepage.description") }}
+  </p>
 </template>
 
 <script setup lang="ts"></script>
