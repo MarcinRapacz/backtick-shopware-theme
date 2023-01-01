@@ -39,6 +39,7 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // This order is important
+    addPlugin(resolve(runtimeDir, "plugins", "30.enrichRoute.ts"));
     addPlugin(resolve(runtimeDir, "plugins", "20.setRuntimeData.ts"));
     addPlugin(resolve(runtimeDir, "plugins", "10.injectAdminData.ts"));
 

@@ -6,6 +6,7 @@ import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composabl
 interface IUseDomain {
   domains: Ref<IDomain[]>;
   selectedDomain: ComputedRef<IDomain | undefined>;
+  domainPrefixes: string[];
   setDomain: (id: string) => void;
 }
 
@@ -17,6 +18,8 @@ export const useDomain = (): IUseDomain => {
   const domains: Ref<IDomain[]> = ref(salesChannel.value.domains);
 
   const selectedDomain = computed(() => _selectedDomain.value);
+
+  const domainPrefixes = ["/", "/de", "/pl"];
 
   const setDomain = (id: string): void => {
     const salesChannelDomain: IDomain | undefined = domains.value.find(
@@ -33,6 +36,7 @@ export const useDomain = (): IUseDomain => {
   return {
     domains,
     selectedDomain,
+    domainPrefixes,
     setDomain,
   };
 };
