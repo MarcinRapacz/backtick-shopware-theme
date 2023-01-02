@@ -11,7 +11,6 @@ interface IUseDomain {
 }
 
 export const useDomain = (): IUseDomain => {
-  const requestEvent = useRequestEvent();
   const { salesChannel } = useSalesChannel();
 
   const _selectedDomain = useState<IDomain | undefined>("_selectedDomain");
@@ -21,15 +20,15 @@ export const useDomain = (): IUseDomain => {
   const selectedDomain = computed(() => _selectedDomain.value);
 
   const setDomain = (id: string): void => {
-    const salesChannelDomain: IDomain | undefined = domains.value.find(
-      (salesChannelDomain) => salesChannelDomain.id === id
+    const domain: IDomain | undefined = domains.value.find(
+      (domain) => domain.id === id
     );
-    if (!salesChannelDomain) {
+    if (!domain) {
       console.warn("Sales channel domain not found");
       return;
     }
 
-    _selectedDomain.value = salesChannelDomain;
+    _selectedDomain.value = domain;
   };
 
   return {
