@@ -13,6 +13,7 @@ export default defineEventHandler(async (_event) => {
   const salesChannel = await salesChannelUtils.syncSalesChannel();
   await snippetUtils.syncSnippets({
     setIds: salesChannel.domains.map((domain) => domain.snippetSetId),
+    translationKey: "pwa.",
   });
 
   await clearTempStorage();

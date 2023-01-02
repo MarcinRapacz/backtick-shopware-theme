@@ -4,10 +4,14 @@
   <LanguageList />
   <CurrencyList />
   <SnippetSetList />
-  <p>$t("headless.homepage.title"): {{ $t("headless.homepage.title") }}</p>
+  <!-- <p>$t("headless.homepage.title"): {{ $t("headless.homepage.title") }}</p>
   <p>
     $t("headless.homepage.description"):
     {{ $t("headless.homepage.description") }}
+  </p> -->
+  <p>
+    $t("pwa.cart.description"):
+    {{ $t("pwa.cart.description") }}
   </p>
 </template>
 
