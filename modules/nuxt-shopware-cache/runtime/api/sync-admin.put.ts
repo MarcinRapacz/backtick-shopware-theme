@@ -1,8 +1,4 @@
-import {
-  authUtils,
-  salesChannelUtils,
-  snippetUtils,
-} from "@/modules/nuxt-shopware-cache/runtime/utils";
+import { authUtils, salesChannelUtils, snippetUtils } from "../utils";
 
 const clearTempStorage = async () => {
   const keys = (await useStorage().getKeys()).filter((key: string) =>

@@ -1,5 +1,5 @@
 import { defineNuxtPlugin } from "#app";
-import { ISalesChannel } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannel";
+import { ISalesChannel } from "../../interfaces/ISalesChannel";
 
 export default defineNuxtPlugin(async () => {
   const salesChannel = useState<ISalesChannel | null>("salesChannel");

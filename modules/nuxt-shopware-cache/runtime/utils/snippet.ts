@@ -1,4 +1,4 @@
-import { redisUtils } from "@/modules/nuxt-shopware-cache/runtime/utils";
+import { redisUtils } from ".";
 import { ISnippetResponse } from "../../interfaces/ISnippetResponse";
 
 export const getSnippet = (setId: string): Promise<Record<string, string>> => {

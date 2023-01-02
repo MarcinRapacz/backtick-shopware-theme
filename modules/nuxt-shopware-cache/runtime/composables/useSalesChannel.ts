@@ -1,5 +1,5 @@
 import { Ref } from "vue";
-import { ISalesChannel } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannel";
+import { ISalesChannel } from "../../interfaces/ISalesChannel";
 
 interface IUseSalesChannel {
   salesChannel: Ref<ISalesChannel>;

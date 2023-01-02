@@ -1,4 +1,4 @@
-import { IDomain } from "~~/modules/nuxt-shopware-cache/interfaces/IDomain";
+import { IDomain } from "./IDomain";
 
 export interface ISalesChannel {
   typeId: string;

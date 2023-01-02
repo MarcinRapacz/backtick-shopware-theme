@@ -1,9 +1,9 @@
 import { ref, Ref, computed, ComputedRef, watch } from "vue";
-import { uniqBy } from "lodash";
+import _ from "lodash";
 import { useState } from "#app";
-import { ILanguage } from "@/modules/nuxt-shopware-cache/interfaces/ILanguage";
-import { useSalesChannel } from "@/modules/nuxt-shopware-cache/runtime/composables/useSalesChannel";
-import { useDomain } from "~~/modules/nuxt-shopware-cache/runtime/composables/useDomain";
+import { ILanguage } from "../../interfaces/ILanguage";
+import { useSalesChannel } from "./useSalesChannel";
+import { useDomain } from "./useDomain";
 
 interface IUseLanguage {
   selectedLanguage: ComputedRef<ILanguage>;
@@ -23,7 +23,7 @@ export const useLanguage = (): IUseLanguage => {
   const domainLanguage = computed(() => selectedDomain.value?.language);
 
   const languages: Ref<ILanguage[]> = ref(
-    uniqBy(
+    _.uniqBy(
       salesChannel.value.domains.map((domains) => domains.language),
       "id"
     )

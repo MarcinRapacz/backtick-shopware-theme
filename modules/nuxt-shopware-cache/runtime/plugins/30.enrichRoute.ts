@@ -1,4 +1,4 @@
-import { clone } from "lodash";
+import _ from "lodash";
 import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin(async () => {
@@ -9,7 +9,7 @@ export default defineNuxtPlugin(async () => {
     domainPrefixes
       .filter((prefix) => prefix !== "/")
       .forEach((prefix) => {
-        const clonedRoute = clone(route);
+        const clonedRoute = _.clone(route);
         clonedRoute.path =
           clonedRoute.path === "/" ? prefix : prefix + clonedRoute.path;
         clonedRoute.name = prefix + "__" + clonedRoute.name?.toString();

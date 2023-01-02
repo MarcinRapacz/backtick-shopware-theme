@@ -1,4 +1,4 @@
-import { snippetUtils } from "@/modules/nuxt-shopware-cache/runtime/utils";
+import { snippetUtils } from "../utils";
 
 export default defineEventHandler(async (event) => {
   try {

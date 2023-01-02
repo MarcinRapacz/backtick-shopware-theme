@@ -1,6 +1,6 @@
 import { Ref, ComputedRef } from "vue";
-import { uniqBy } from "lodash";
-import { ICurrency } from "@/modules/nuxt-shopware-cache/interfaces/ICurrency";
+import _ from "lodash";
+import { ICurrency } from "../../interfaces/ICurrency";
 
 interface IUseCurrency {
   selectedCurrency: ComputedRef<ICurrency>;
@@ -20,7 +20,7 @@ export const useCurrency = (): IUseCurrency => {
   const domainCurrency = computed(() => selectedDomain.value?.currency);
 
   const currencies: Ref<ICurrency[]> = ref(
-    uniqBy(
+    _.uniqBy(
       salesChannel.value.domains.map((domains) => domains.currency),
       "id"
     )

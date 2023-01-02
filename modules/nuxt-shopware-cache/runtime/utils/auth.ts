@@ -1,4 +1,4 @@
-import { redisUtils } from "@/modules/nuxt-shopware-cache/runtime/utils";
+import { redisUtils } from ".";
 
 interface IResponse {
   token_type: string;

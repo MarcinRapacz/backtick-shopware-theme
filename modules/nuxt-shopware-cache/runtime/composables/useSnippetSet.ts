@@ -1,6 +1,6 @@
 import { Ref, ComputedRef } from "vue";
-import { uniqBy } from "lodash";
-import { ISnippetSet } from "@/modules/nuxt-shopware-cache/interfaces/ISnippetSet";
+import _ from "lodash";
+import { ISnippetSet } from "../../interfaces/ISnippetSet";
 
 interface IUseSnippetSet {
   selectedSnippetSet: ComputedRef<ISnippetSet>;
@@ -23,7 +23,7 @@ export const useSnippetSet = (): IUseSnippetSet => {
   const domainSnippetSet = computed(() => selectedDomain.value?.snippetSet);
 
   const snippetSets: Ref<ISnippetSet[]> = ref(
-    uniqBy(
+    _.uniqBy(
       salesChannel.value.domains.map((domains) => domains.snippetSet),
       "id"
     )

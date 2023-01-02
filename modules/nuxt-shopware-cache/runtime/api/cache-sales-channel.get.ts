@@ -1,4 +1,4 @@
-import { salesChannelUtils } from "@/modules/nuxt-shopware-cache/runtime/utils";
+import { salesChannelUtils } from "../utils";
 
 export default defineEventHandler(async (_event) => {
   try {

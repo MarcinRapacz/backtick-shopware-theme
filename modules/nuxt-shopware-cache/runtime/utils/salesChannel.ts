@@ -1,6 +1,6 @@
-import { ISalesChannel } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannel";
-import { ISalesChannelResponse } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannelResponse";
-import { redisUtils } from "@/modules/nuxt-shopware-cache/runtime/utils";
+import { ISalesChannel } from "../../interfaces/ISalesChannel";
+import { ISalesChannelResponse } from "../../interfaces/ISalesChannelResponse";
+import { redisUtils } from ".";
 
 export const getSalesChannel = async (): Promise<ISalesChannel | null> => {
   return useStorage().getItem(

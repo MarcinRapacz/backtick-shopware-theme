@@ -1,4 +1,4 @@
-import { ISalesChannel } from "@/modules/nuxt-shopware-cache/interfaces/ISalesChannel";
+import { ISalesChannel } from "./ISalesChannel";
 
 export interface ISalesChannelResponse {
   total: number;
