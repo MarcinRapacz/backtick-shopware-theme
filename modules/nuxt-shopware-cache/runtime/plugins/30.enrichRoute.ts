@@ -3,10 +3,11 @@ import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin(async () => {
   const router = useRouter();
+
   const { domainPrefixes } = useDomain();
 
   router.getRoutes().forEach((route) => {
-    domainPrefixes
+    domainPrefixes.value
       .filter((prefix) => prefix !== "/")
       .forEach((prefix) => {
         const clonedRoute = _.clone(route);
