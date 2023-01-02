@@ -13,6 +13,5 @@
 </template>
 
 <script setup lang="ts">
-import { useSalesChannel } from "#imports";
 const { salesChannel } = useSalesChannel();
 </script>
