@@ -19,7 +19,4 @@ export default defineEventHandler(async (_event) => {
       statusMessage: "Something went wrong",
     });
   }
-  const salesChannel = await salesChannelUtils.getSalesChannel();
-
-  return { salesChannel };
 });

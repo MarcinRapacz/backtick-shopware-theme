@@ -19,6 +19,7 @@ export const useDomain = (): IUseDomain => {
 
   const selectedDomain = computed(() => _selectedDomain.value);
 
+  // TODO: dynamic prefixes
   const domainPrefixes = ["/", "/de", "/pl"];
 
   const setDomain = (id: string): void => {

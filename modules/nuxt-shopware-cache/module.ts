@@ -22,19 +22,19 @@ export default defineNuxtModule<ModuleOptions>({
 
     addServerHandler({
       route: "/api/sync-admin",
-      handler: resolve(runtimeDir, "endpoints", "syncAdmin.ts"),
+      handler: resolve(runtimeDir, "api", "sync-admin.put.ts"),
       method: "put",
     });
 
     addServerHandler({
-      route: "/api/get-admin",
-      handler: resolve(runtimeDir, "endpoints", "getAdmin.ts"),
+      route: "/api/cache/sales-channel",
+      handler: resolve(runtimeDir, "api", "cache-sales-channel.get.ts"),
       method: "get",
     });
 
     addServerHandler({
-      route: "/api/snippets/:setId",
-      handler: resolve(runtimeDir, "endpoints", "getSnippetBySetId.ts"),
+      route: "/api/cache/snippets/:setId",
+      handler: resolve(runtimeDir, "api", "cache-snippet.get.ts"),
       method: "get",
     });
 

@@ -49,7 +49,7 @@ export const useSnippetSet = (): IUseSnippetSet => {
   };
 
   const fetchSnippetSet = async (id: string) => {
-    const response = await $fetch(`/api/snippets/${id}`);
+    const response = await $fetch(`/api/cache/snippets/${id}`);
     snippets.value[id] = response.snippets;
   };
 
