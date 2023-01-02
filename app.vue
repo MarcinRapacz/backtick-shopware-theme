@@ -1,9 +1,9 @@
 <template>
   <p>{{ salesChannel.name }}</p>
   <nav class="nav">
-    <NuxtLink to="/">Homepage</NuxtLink>
-    <NuxtLink to="/about">About</NuxtLink>
-    <NuxtLink to="/contact">Contact</NuxtLink>
+    <SwLink to="/">Homepage</SwLink>
+    <SwLink to="/about">About</SwLink>
+    <SwLink to="/contact">Contact</SwLink>
   </nav>
   <NuxtPage />
 </template>
