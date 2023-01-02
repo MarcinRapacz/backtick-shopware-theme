@@ -4,16 +4,18 @@ import { defineNuxtPlugin } from "#app";
 export default defineNuxtPlugin(async () => {
   const router = useRouter();
 
-  const { domainPrefixes } = useDomain();
+  const { domains } = useDomain();
 
   router.getRoutes().forEach((route) => {
-    domainPrefixes.value
-      .filter((prefix) => prefix !== "/")
-      .forEach((prefix) => {
+    domains.value
+      .filter((domain) => domain.path !== "/")
+      .forEach((domain) => {
         const clonedRoute = _.clone(route);
         clonedRoute.path =
-          clonedRoute.path === "/" ? prefix : prefix + clonedRoute.path;
-        clonedRoute.name = prefix + "__" + clonedRoute.name?.toString();
+          clonedRoute.path === "/"
+            ? domain.path
+            : domain.path + clonedRoute.path;
+        clonedRoute.name = domain.path + "__" + clonedRoute.name?.toString();
         router.addRoute(clonedRoute);
       });
   });

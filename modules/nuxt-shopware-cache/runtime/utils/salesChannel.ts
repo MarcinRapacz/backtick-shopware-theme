@@ -1,6 +1,7 @@
 import { ISalesChannel } from "../../interfaces/ISalesChannel";
 import { ISalesChannelResponse } from "../../interfaces/ISalesChannelResponse";
 import { redisUtils } from ".";
+import { addPathToDomain } from "./domain";
 
 export const getSalesChannel = async (): Promise<ISalesChannel | null> => {
   return useStorage().getItem(
@@ -11,11 +12,12 @@ export const getSalesChannel = async (): Promise<ISalesChannel | null> => {
 export const syncSalesChannel = async (): Promise<ISalesChannel> => {
   try {
     const salesChannel = await fetchSalesChannel();
+    const enrichSalesChannel = addPathToDomain(salesChannel);
     await useStorage().setItem(
       redisUtils.keys.admin.salesChannel,
-      salesChannel
+      enrichSalesChannel
     );
-    return salesChannel;
+    return enrichSalesChannel;
   } catch (e) {
     await useStorage().removeItem(redisUtils.keys.admin.salesChannel);
     throw new Error(`syncSalesChannel: ${e}`);

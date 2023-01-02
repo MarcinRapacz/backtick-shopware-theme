@@ -7,7 +7,6 @@ import { useSalesChannel } from "./useSalesChannel";
 interface IUseDomain {
   domains: Ref<IDomain[]>;
   selectedDomain: ComputedRef<IDomain | undefined>;
-  domainPrefixes: ComputedRef<string[]>;
   setDomain: (id: string) => void;
 }
 
@@ -20,18 +19,6 @@ export const useDomain = (): IUseDomain => {
   const domains: Ref<IDomain[]> = ref(salesChannel.value.domains);
 
   const selectedDomain = computed(() => _selectedDomain.value);
-
-  const domainPrefixes = computed(() =>
-    domains.value.map((domain) => {
-      try {
-        const { host } = new URL(domain.url);
-        return domain.url.split(host)[1] || "/";
-      } catch (error) {
-        console.error(`Invalid host: ${domain.url}` + error);
-        return "/";
-      }
-    })
-  );
 
   const setDomain = (id: string): void => {
     const salesChannelDomain: IDomain | undefined = domains.value.find(
@@ -48,7 +35,6 @@ export const useDomain = (): IUseDomain => {
   return {
     domains,
     selectedDomain,
-    domainPrefixes,
     setDomain,
   };
 };

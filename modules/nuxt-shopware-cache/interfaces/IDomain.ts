@@ -4,6 +4,7 @@ import { ISnippetSet } from "./ISnippetSet";
 
 export interface IDomain {
   url: string;
+  path: string;
   currencyId: string;
   currency: ICurrency;
   snippetSetId: string;
