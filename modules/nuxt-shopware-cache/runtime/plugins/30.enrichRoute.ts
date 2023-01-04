@@ -2,6 +2,7 @@ import _ from "lodash";
 import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin(async () => {
+  const time1 = new Date().getTime();
   const router = useRouter();
 
   const { domains } = useDomain();
@@ -19,4 +20,6 @@ export default defineNuxtPlugin(async () => {
         router.addRoute(clonedRoute);
       });
   });
+  const time2 = new Date().getTime();
+  console.log("30.enrichRoute: ", time2 - time1);
 });
