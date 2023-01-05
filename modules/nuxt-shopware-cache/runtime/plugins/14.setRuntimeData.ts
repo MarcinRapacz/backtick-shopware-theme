@@ -1,16 +1,13 @@
-import { watchEffect } from "vue";
 import { createI18n } from "vue-i18n";
 
 import { defineNuxtPlugin } from "#app";
-import { useLanguage, useDomain, useCurrency, useSnippetSet } from "#imports";
+import { useDomain, useSnippetSet } from "#imports";
 import { IDomain } from "../../interfaces/IDomain";
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const requestEvent = useRequestEvent();
   const { setDomain, domains, selectedDomain } = useDomain();
-  const { setLanguage } = useLanguage();
-  const { setCurrency } = useCurrency();
-  const { setSnippetSet, fetchSnippetSet } = useSnippetSet();
+  const { fetchSnippetSet } = useSnippetSet();
 
   if (process.server) {
     const prefix = domains.value
@@ -45,14 +42,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   });
 
   nuxtApp.vueApp.use(i18n);
-
-  watchEffect(() => {
-    if (selectedDomain.value) {
-      setLanguage(selectedDomain.value.languageId);
-      setCurrency(selectedDomain.value.currencyId);
-      setSnippetSet(selectedDomain.value.snippetSetId);
-    }
-  });
 
   return {
     provide: {
