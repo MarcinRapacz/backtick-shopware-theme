@@ -53,10 +53,6 @@ export const useSnippetSet = (): IUseSnippetSet => {
     snippets.value[id] = response.snippets;
   };
 
-  watch(selectedDomain, (domain) => {
-    domain && setSnippetSet(domain.snippetSetId);
-  });
-
   return {
     selectedSnippetSet,
     domainSnippetSet,

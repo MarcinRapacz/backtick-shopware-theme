@@ -37,10 +37,6 @@ export const useCurrency = (): IUseCurrency => {
     _selectedCurrency.value = currency;
   };
 
-  watch(selectedDomain, (domain) => {
-    domain && setCurrency(domain.currencyId);
-  });
-
   return {
     selectedCurrency,
     domainCurrency,

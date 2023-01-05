@@ -35,11 +35,11 @@ export const useDomain = (): IUseDomain => {
 
   const switchDomain = (id: string) => {
     if (process.client) {
-      if (selectedDomain.value?.id === id) {
+      if (_selectedDomain.value?.id === id) {
         return;
       }
 
-      const oldPrefix = selectedDomain.value?.path;
+      const oldPrefix = _selectedDomain.value?.path;
       const domain: IDomain | undefined = domains.value.find(
         (domain) => domain.id === id
       );

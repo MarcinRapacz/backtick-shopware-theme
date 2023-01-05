@@ -1,9 +1,11 @@
 <template>
   <h1>About</h1>
-  <p>{{ salesChannel.createdAt }}</p>
   <SalesChannelDomainList />
   <LanguageList />
   <CurrencyList />
+  <SnippetSetList />
+  <SnippetSetList />
+  <SnippetSetList />
   <SnippetSetList />
   <!-- <p>$t("headless.homepage.title"): {{ $t("headless.homepage.title") }}</p> -->
   <!-- <p>
@@ -12,6 +14,4 @@
   </p> -->
 </template>
 
-<script setup lang="ts">
-const { salesChannel } = useSalesChannel();
-</script>
+<script setup lang="ts"></script>

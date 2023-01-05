@@ -1,4 +1,4 @@
-import { ref, Ref, computed, ComputedRef, watch } from "vue";
+import { ref, Ref, computed, ComputedRef } from "vue";
 import _ from "lodash";
 import { useState } from "#app";
 import { ILanguage } from "../../interfaces/ILanguage";
@@ -39,10 +39,6 @@ export const useLanguage = (): IUseLanguage => {
     }
     _selectedLanguage.value = language;
   };
-
-  watch(selectedDomain, (domain) => {
-    domain && setLanguage(domain.languageId);
-  });
 
   return {
     selectedLanguage,
